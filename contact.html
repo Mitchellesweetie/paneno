@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>contact</title>
+  </head>
+  <body>
+  	
+	
+		<div class="tittle">
+		<img src="firm.png" class="tittle-details">
+
+		<div class="menu">
+
+				 <a href="#paneno.html">Home </a>
+			<div class="menu2">
+				<button type="button"class="subnavbtn">About Us</button>			
+			<div class="dropup-content" >
+				<a href="vision.html">Vision,Mision and Core Values</a><br>
+				<a href="whatwedo.html">What we do</a><br>
+				<a href="team.html">Our Team</a>					
+
+		</div></div>
+			<div class="menu2">
+				<button type="button"class="subnavbtn">Services</button>
+				<div class="dropup-content">
+				<a href="training.html">Trainings</a><br>
+				<a href="otherservices.html">Other Services</a><br>
+				<a href="covid.html">Covid Pandemic</a>
+
+
+
+			</div></div>
+			<a href="contact.html">Contact</a>
+		
+	
+	
+	
+	</div>
+    <div class="wholeclass">
+      <div class="contact-ti">OUR CONTACTS</div>
+      <br />
+      <div class="contact-sub">
+        <span class="material-symbols-outlined"> home </span>Paneno Crime and
+        security watch
+      </div>
+      <br />
+      <div class="contact-num">
+        <span class="material-symbols-outlined">call</span> +254732272772, 0722168844
+      </div>
+      <br />
+      <div class="email"><span class="material-symbols-outlined">mail</span>info@panenosecurity.com</div>
+      <br />
+    </div>
+    <div class="form">
+      <form>
+        <label>Your name</label><br />
+        <input type="text" name="name" id="username" /><br />
+        <label>Your email</label><br />
+        <input type="email" name="email" id="email" /><br />
+        <label>subject</label><br />
+        <input type="text" name="text" id="text" /><br />
+        <label> Your message(optional)</label><br />
+        <textarea id="message" rows="20" cols="40"></textarea><br />
+        <button type="button" id="submit" class="submit">Submit</button>
+      </form>
+    </div>
+ 
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+      import {
+        getDatabase,
+        set,
+        ref,
+      } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyB3NMiFc9EzfAaQ6ILptnAe9sn7wNfuX2I",
+        authDomain: "paneno-894c0.firebaseapp.com",
+        projectId: "paneno-894c0",
+        storageBucket: "paneno-894c0.appspot.com",
+        messagingSenderId: "960986123494",
+        appId: "1:960986123494:web:8fbd3a576c56d1a8983f27",
+      };
+      // tialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase(app);
+
+      document
+        .getElementById("submit")
+        .addEventListener(
+          "click",
+          function writeUserData(username, email, text, message) {
+            username = document.getElementById("username").value;
+            email = document.getElementById("email").value;
+            text = document.getElementById("text").value;
+            message = document.getElementById("message").value;
+            set(ref(database, "users/"), {
+              username: username,
+              email: email,
+              text: text,
+              message: message,
+            })
+						
+			.then(() => {
+			// Data saved successfully!
+			console.log('success')
+			})
+			.catch((error) => {
+			// The write failed...
+			console.log(err)
+			});
+
+          }
+        );
+
+      // Ini);
+    </script>
+
+
+  </body>
+</html>
